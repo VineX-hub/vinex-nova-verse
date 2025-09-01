@@ -23,7 +23,7 @@ const Landing = () => {
       description: "Immersive story reading with audio narration",
       color: "bg-primary",
       textColor: "text-primary-foreground",
-      href: "/reader"
+      href: "/novels"
     },
     {
       name: "VineInspire",
@@ -31,7 +31,7 @@ const Landing = () => {
       description: "Creative writing tools and inspiration",
       color: "bg-muted",
       textColor: "text-muted-foreground",
-      href: "#"
+      href: "/inspire"
     },
     {
       name: "VineLearn",
@@ -39,7 +39,7 @@ const Landing = () => {
       description: "Educational content and courses",
       color: "bg-muted",
       textColor: "text-muted-foreground",
-      href: "#"
+      href: "/learn"
     },
   ];
 
@@ -77,7 +77,7 @@ const Landing = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section 
-        className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden"
+        className="relative min-h-[70vh] flex items-center justify-center bg-gradient-hero overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${heroImage})`,
           backgroundSize: 'cover',
@@ -95,22 +95,19 @@ const Landing = () => {
               gain inspiration, and learn new skills.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/reader">
+              <Link to="/novels">
                 <Button size="lg" className="btn-hero text-lg px-8 py-4">
                   <Play className="w-5 h-5 mr-2" />
                   Explore VineNovels
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="btn-glass text-lg px-8 py-4">
-                Learn More
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link to="/about">
+                <Button size="lg" variant="outline" className="btn-glass text-lg px-8 py-4">
+                  Learn More
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
             </div>
-          </div>
-        </div>
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
@@ -230,7 +227,7 @@ const Landing = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Link to="/reader">
+            <Link to="/novels">
               <Button size="lg" className="btn-hero">
                 View All Stories
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -258,25 +255,25 @@ const Landing = () => {
             <div>
               <h4 className="font-semibold mb-4">Platforms</h4>
               <ul className="space-y-2 text-background/70">
-                <li><Link to="/reader" className="hover:text-primary">VineNovels</Link></li>
-                <li><span className="cursor-not-allowed">VineInspire</span></li>
-                <li><span className="cursor-not-allowed">VineLearn</span></li>
+                <li><Link to="/novels" className="hover:text-primary">VineNovels</Link></li>
+                <li><Link to="/inspire" className="hover:text-primary">VineInspire</Link></li>
+                <li><Link to="/learn" className="hover:text-primary">VineLearn</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-background/70">
-                <li><a href="#" className="hover:text-primary">About</a></li>
-                <li><a href="#" className="hover:text-primary">Careers</a></li>
-                <li><a href="#" className="hover:text-primary">Contact</a></li>
+                <li><Link to="/about" className="hover:text-primary">About</Link></li>
+                <li><Link to="/careers" className="hover:text-primary">Careers</Link></li>
+                <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Support</h4>
               <ul className="space-y-2 text-background/70">
-                <li><a href="#" className="hover:text-primary">Help Center</a></li>
-                <li><a href="#" className="hover:text-primary">Privacy</a></li>
-                <li><a href="#" className="hover:text-primary">Terms</a></li>
+                <li><Link to="/help" className="hover:text-primary">Help Center</Link></li>
+                <li><Link to="/privacy" className="hover:text-primary">Privacy</Link></li>
+                <li><Link to="/terms" className="hover:text-primary">Terms</Link></li>
               </ul>
             </div>
           </div>

@@ -9,7 +9,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Home", href: "/", icon: Home },
-    { name: "VineNovels", href: "/reader", icon: BookOpen },
+    { name: "VineNovels", href: "/novels", icon: BookOpen },
     { name: "Admin", href: "/admin", icon: BarChart3 },
   ];
 
