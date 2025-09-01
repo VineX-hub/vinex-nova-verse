@@ -9,8 +9,9 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Home", href: "/", icon: Home },
-    { name: "VineNovels", href: "/novels", icon: BookOpen },
-    { name: "Admin", href: "/admin", icon: BarChart3 },
+    { name: "Platforms", href: "#platforms", icon: BookOpen },
+    { name: "About", href: "/about", icon: Home },
+    { name: "Contact", href: "/contact", icon: Home },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -45,8 +46,8 @@ const Navigation = () => {
                 <span>{item.name}</span>
               </Link>
             ))}
-            <Button variant="default" className="btn-hero">
-              Get Started
+            <Button variant="default" className="btn-hero" asChild>
+              <Link to="/contact">Get Started</Link>
             </Button>
           </div>
 
@@ -83,7 +84,9 @@ const Navigation = () => {
                 </Link>
               ))}
               <div className="pt-4">
-                <Button className="w-full btn-hero">Get Started</Button>
+                <Button className="w-full btn-hero" asChild>
+                  <Link to="/contact">Get Started</Link>
+                </Button>
               </div>
             </div>
           </div>

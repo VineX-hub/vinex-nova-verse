@@ -1,18 +1,15 @@
-import { Star, Users, BookOpen, TrendingUp, ArrowRight, Play, Heart, Eye } from "lucide-react";
+import { Star, Users, BookOpen, TrendingUp, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
+import { EXTERNAL_LINKS, isLinkAvailable } from "@/config/links";
 import heroImage from "@/assets/hero-bg.jpg";
-import story1 from "@/assets/story-1.jpg";
-import story2 from "@/assets/story-2.jpg";
-import story3 from "@/assets/story-3.jpg";
 
 const Landing = () => {
   const stats = [
     { icon: Users, label: "Readers", value: "25,000+" },
     { icon: BookOpen, label: "Stories", value: "150+" },
-    { icon: Eye, label: "Sessions", value: "1M+" },
     { icon: TrendingUp, label: "Growth", value: "+45%" },
   ];
 
@@ -20,56 +17,26 @@ const Landing = () => {
     {
       name: "VineNovels",
       status: "Live",
-      description: "Immersive story reading with audio narration",
+      description: "Immersive story reading with audio narration and premium content",
       color: "bg-primary",
       textColor: "text-primary-foreground",
-      href: "/novels"
+      href: EXTERNAL_LINKS.novels || "#"
     },
     {
       name: "VineInspire",
       status: "Coming Soon",
-      description: "Creative writing tools and inspiration",
+      description: "Creative writing tools, prompts, and inspiration for writers",
       color: "bg-muted",
       textColor: "text-muted-foreground",
-      href: "/inspire"
+      href: EXTERNAL_LINKS.inspire || "#"
     },
     {
       name: "VineLearn",
       status: "Coming Soon", 
-      description: "Educational content and courses",
+      description: "Educational content, courses, and skill development",
       color: "bg-muted",
       textColor: "text-muted-foreground",
-      href: "/learn"
-    },
-  ];
-
-  const featuredStories = [
-    {
-      id: 1,
-      title: "The Enchanted Forest",
-      author: "Sarah Chen",
-      rating: 4.8,
-      readers: "12.5K",
-      image: story1,
-      genre: "Fantasy"
-    },
-    {
-      id: 2,
-      title: "Neon Dreams",
-      author: "Marcus Rodriguez",
-      rating: 4.7,
-      readers: "8.9K",
-      image: story2,
-      genre: "Sci-Fi"
-    },
-    {
-      id: 3,
-      title: "Love in Bloom",
-      author: "Emma Thompson",
-      rating: 4.9,
-      readers: "15.2K",
-      image: story3,
-      genre: "Romance"
+      href: EXTERNAL_LINKS.learn || "#"
     },
   ];
 
@@ -91,16 +58,27 @@ const Landing = () => {
               Welcome to <span className="text-yellow-300">VineX</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-              The future of content creation and consumption. Discover immersive stories, 
-              gain inspiration, and learn new skills.
+              Your gateway to premium content platforms. Discover immersive stories on VineNovels, 
+              find creative inspiration, and learn new skills across our ecosystem.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/novels">
-                <Button size="lg" className="btn-hero text-lg px-8 py-4">
-                  <Play className="w-5 h-5 mr-2" />
-                  Explore VineNovels
+              {isLinkAvailable("novels") ? (
+                <a 
+                  href={EXTERNAL_LINKS.novels} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <Button size="lg" className="btn-hero text-lg px-8 py-4">
+                    <BookOpen className="w-5 h-5 mr-2" />
+                    Visit VineNovels
+                  </Button>
+                </a>
+              ) : (
+                <Button size="lg" className="btn-hero text-lg px-8 py-4" disabled>
+                  <BookOpen className="w-5 h-5 mr-2" />
+                  Coming Soon
                 </Button>
-              </Link>
+              )}
               <Link to="/about">
                 <Button size="lg" variant="outline" className="btn-glass text-lg px-8 py-4">
                   Learn More
@@ -134,12 +112,13 @@ const Landing = () => {
       </section>
 
       {/* Platform Cards */}
-      <section className="py-20 bg-background">
+      <section id="platforms" className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Our Platforms</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Discover a world of content across our integrated platform ecosystem
+              Discover premium content across our integrated platform ecosystem. Each platform 
+              offers unique experiences designed for different aspects of your creative journey.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -150,7 +129,6 @@ const Landing = () => {
                   platform.status === "Live" ? "shadow-glow" : ""
                 }`}
                 style={{ animationDelay: `${index * 0.2}s` }}
-                onClick={() => platform.href !== "#" && (window.location.href = platform.href)}
               >
                 <CardContent className="p-8 text-center">
                   <div className="mb-4 flex justify-center">
@@ -162,13 +140,18 @@ const Landing = () => {
                   </div>
                   <h3 className="text-2xl font-bold mb-4">{platform.name}</h3>
                   <p className="text-muted-foreground mb-6">{platform.description}</p>
-                  {platform.status === "Live" ? (
-                    <Link to={platform.href}>
+                  {platform.status === "Live" && isLinkAvailable("novels") ? (
+                    <a 
+                      href={platform.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-full"
+                    >
                       <Button className="w-full">
-                        Explore Now
+                        Visit Site
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
-                    </Link>
+                    </a>
                   ) : (
                     <Button variant="outline" disabled className="w-full">
                       Coming Soon
@@ -177,62 +160,6 @@ const Landing = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Stories */}
-      <section className="py-20 bg-gradient-card">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Featured Stories</h2>
-            <p className="text-xl text-muted-foreground">
-              Discover the most popular stories on VineNovels
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {featuredStories.map((story, index) => (
-              <Card
-                key={story.id}
-                className="overflow-hidden hover-lift cursor-pointer animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={story.image}
-                    alt={story.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge variant="secondary" className="bg-primary text-primary-foreground">
-                      {story.genre}
-                    </Badge>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{story.title}</h3>
-                  <p className="text-muted-foreground mb-4">by {story.author}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-1">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="font-medium">{story.rating}</span>
-                    </div>
-                    <div className="flex items-center space-x-1 text-muted-foreground">
-                      <Heart className="w-4 h-4" />
-                      <span>{story.readers}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Link to="/novels">
-              <Button size="lg" className="btn-hero">
-                View All Stories
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
@@ -248,23 +175,65 @@ const Landing = () => {
                 </div>
                 <span className="text-xl font-bold">VineX</span>
               </div>
-              <p className="text-background/70">
-                The future of content creation and consumption.
+              <p className="text-background/70 mb-4">
+                Your gateway to premium content platforms.
               </p>
+              <div className="space-y-2 text-background/70 text-sm">
+                <p>Email: vidvine0@gmail.com</p>
+                <p>Location: Nigeria</p>
+              </div>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Platforms</h4>
               <ul className="space-y-2 text-background/70">
-                <li><Link to="/novels" className="hover:text-primary">VineNovels</Link></li>
-                <li><Link to="/inspire" className="hover:text-primary">VineInspire</Link></li>
-                <li><Link to="/learn" className="hover:text-primary">VineLearn</Link></li>
+                <li>
+                  {isLinkAvailable("novels") ? (
+                    <a 
+                      href={EXTERNAL_LINKS.novels} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-primary"
+                    >
+                      VineNovels
+                    </a>
+                  ) : (
+                    <span className="text-background/50">VineNovels (Coming Soon)</span>
+                  )}
+                </li>
+                <li>
+                  {isLinkAvailable("inspire") ? (
+                    <a 
+                      href={EXTERNAL_LINKS.inspire} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-primary"
+                    >
+                      VineInspire
+                    </a>
+                  ) : (
+                    <span className="text-background/50">VineInspire (Coming Soon)</span>
+                  )}
+                </li>
+                <li>
+                  {isLinkAvailable("learn") ? (
+                    <a 
+                      href={EXTERNAL_LINKS.learn} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-primary"
+                    >
+                      VineLearn
+                    </a>
+                  ) : (
+                    <span className="text-background/50">VineLearn (Coming Soon)</span>
+                  )}
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-background/70">
                 <li><Link to="/about" className="hover:text-primary">About</Link></li>
-                <li><Link to="/careers" className="hover:text-primary">Careers</Link></li>
                 <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
               </ul>
             </div>
@@ -278,7 +247,7 @@ const Landing = () => {
             </div>
           </div>
           <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/70">
-            <p>&copy; 2024 VineX. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} VineX. All rights reserved.</p>
           </div>
         </div>
       </footer>

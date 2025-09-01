@@ -10,21 +10,15 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      info: "hello@vinex.com",
+      info: "vidvine0@gmail.com",
       description: "Send us an email and we'll respond within 24 hours"
     },
     {
       icon: MessageCircle,
       title: "Live Chat",
-      info: "Available 24/7",
-      description: "Get instant support through our live chat system"
+      info: "Available Soon",
+      description: "Chat support system coming soon"
     },
-    {
-      icon: Phone,
-      title: "Call Us",
-      info: "+1 (555) 123-4567",
-      description: "Speak directly with our support team"
-    }
   ];
 
   const inquiryTypes = [
@@ -152,7 +146,7 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Visit Our Office</h2>
+              <h2 className="text-4xl font-bold mb-6">Our Location</h2>
               <div className="flex items-start space-x-4 mb-6">
                 <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full">
                   <MapPin className="w-6 h-6 text-primary" />
@@ -160,18 +154,17 @@ const Contact = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">VineX Headquarters</h3>
                   <p className="text-muted-foreground">
-                    123 Innovation Drive<br />
-                    San Francisco, CA 94105<br />
-                    United States
+                    Nigeria<br />
+                    Africa
                   </p>
                 </div>
               </div>
               <p className="text-muted-foreground mb-6">
-                Our office is located in the heart of San Francisco's tech district. 
-                We welcome visitors by appointment - just reach out to schedule a meeting!
+                We're building the future of content platforms from Nigeria. 
+                Reach out to us via email for partnerships and collaborations.
               </p>
-              <Button variant="outline">
-                Schedule a Visit
+              <Button variant="outline" asChild>
+                <a href="mailto:vidvine0@gmail.com">Send Email</a>
               </Button>
             </div>
             

@@ -5,14 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Landing from "./pages/Landing";
-import VineNovelsHome from "./pages/VineNovelsHome";
-import StoryReader from "./pages/StoryReader";
-import AdminDashboard from "./pages/AdminDashboard";
 import VineInspire from "./pages/VineInspire";
 import VineLearn from "./pages/VineLearn";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Careers from "./pages/Careers";
 import HelpCenter from "./pages/HelpCenter";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -30,14 +26,10 @@ const App = () => (
           <Navigation />
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/novels" element={<VineNovelsHome />} />
-            <Route path="/reader" element={<StoryReader />} />
-            <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/inspire" element={<VineInspire />} />
             <Route path="/learn" element={<VineLearn />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/careers" element={<Careers />} />
             <Route path="/help" element={<HelpCenter />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
