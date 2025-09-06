@@ -26,7 +26,7 @@ const Navigation = () => {
               <span className="text-white font-bold text-sm">V</span>
             </div>
             <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-              VineX
+              VineRealm
             </span>
           </Link>
 

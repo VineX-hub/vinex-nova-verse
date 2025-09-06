@@ -1,10 +1,11 @@
-// External links configuration for VineX platform sections
+// External links configuration for VineRealm platform sections
 // Update these URLs when the external sites are ready
 
 export const EXTERNAL_LINKS = {
-  novels: "", // VineNovels site URL
-  inspire: "", // VineInspire site URL  
-  learn: "", // VineLearn site URL
+  novels: "", // VineNovels external URL
+  comics: "", // VineComics external URL
+  inspire: "", // VineInspire external URL  
+  learn: "", // VineLearn external URL
 } as const;
 
 // Helper function to check if a link is available

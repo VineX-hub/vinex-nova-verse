@@ -18,12 +18,12 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    /* VineX Premium Orange Theme */
-    --primary: 25 95% 53%; /* #F97316 */
+    /* VineRealm Deeper Premium Orange Theme */
+    --primary: 25 95% 45%; /* Deeper orange */
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 25 95% 48%;
-    --primary-light: 25 95% 63%;
-    --primary-dark: 25 95% 43%;
+    --primary-hover: 25 95% 40%;
+    --primary-light: 25 95% 55%;
+    --primary-dark: 25 95% 35%;
 
     /* Secondary system */
     --secondary: 220 13% 91%;  

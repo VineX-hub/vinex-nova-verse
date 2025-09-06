@@ -23,6 +23,14 @@ const Landing = () => {
       href: EXTERNAL_LINKS.novels || "#"
     },
     {
+      name: "VineComics",
+      status: "Coming Soon",
+      description: "Visual storytelling through stunning comics and graphic novels",
+      color: "bg-muted",
+      textColor: "text-muted-foreground",
+      href: EXTERNAL_LINKS.comics || "#"
+    },
+    {
       name: "VineInspire",
       status: "Coming Soon",
       description: "Creative writing tools, prompts, and inspiration for writers",
@@ -55,11 +63,11 @@ const Landing = () => {
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
           <div className="animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Welcome to <span className="text-yellow-300">VineX</span>
+              Welcome to <span className="text-yellow-300">VineRealm</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
               Your gateway to premium content platforms. Discover immersive stories on VineNovels, 
-              find creative inspiration, and learn new skills across our ecosystem.
+              enjoy VineComics, find creative inspiration, and learn new skills across our ecosystem.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {isLinkAvailable("novels") ? (
@@ -121,7 +129,7 @@ const Landing = () => {
               offers unique experiences designed for different aspects of your creative journey.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {platforms.map((platform, index) => (
               <Card
                 key={platform.name}
@@ -247,7 +255,7 @@ const Landing = () => {
             </div>
           </div>
           <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/70">
-            <p>&copy; {new Date().getFullYear()} VineX. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} VineRealm. All rights reserved.</p>
           </div>
         </div>
       </footer>
